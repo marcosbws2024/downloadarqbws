@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabela de Downloads Modernizada</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+body {
+    background-color: #e9ecef; /* Fundo cinza claro para destacar o painel */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+/* PAINEL PRINCIPAL DECORADO E ARREDONDADO */
+.main-panel {
+    background-color: #ffffff;
+    border-radius: 1.5rem; /* Cantos arredondados */
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15); /* Sombra elegante */
+    padding: 2rem;
+    margin: 2rem auto;
+}
+h1 {
+    text-align: center;
+    margin: 20px 0 30px 0;
+    color: #1e3a8a; 
+    font-weight: 700;
+}
+.table {
+    box-shadow: none;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #dee2e6; 
+    min-width: 600px; /* Garante que a tabela tenha largura mínima para forçar o scroll horizontal em telas pequenas */
+}
+.table-primary {
+    background-color: #3b82f6 !important;
+    color: white;
+}
+/* BOTÕES DE ÍCONE (Ajuste de tamanho e padding para ficarem compactos) */
+.btn-copy, .btn-download {
+    border-radius: 0.5rem;
+    font-weight: 600;
+    padding: 0.4rem 0.6rem;
+}
+/* CAMPO DE BUSCA SIMPLIFICADO (forma de pílula) */
+#searchInput {
+    max-width: 450px;
+    margin: 0 auto 30px auto;
+    border-radius: 50px !important;
+    padding: 0.75rem 1.25rem;
+}
+.icon-file {
+    margin-right: 0.5rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container main-panel">
+    <h1><i class="bi bi-cloud-download-fill me-2"></i> Tabela de Downloads</h1>
+
+    <div class="d-flex justify-content-center">
+        <input type="text" id="searchInput" class="form-control shadow-sm" placeholder="Buscar arquivo ou manual..." aria-label="Buscar">
+    </div>
+
+    <div id="copyAlert" class="alert alert-success d-none position-fixed top-0 start-50 translate-middle-x mt-3 shadow-lg" role="alert" style="z-index: 1050;">
+        <i class="bi bi-clipboard-check-fill me-2"></i> Link copiado com sucesso!
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle" id="downloadsTable">
+            <thead class="table-primary">
+                <tr>
+                    <th>Nome do Arquivo</th>
+                    <th>Link</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="bi bi-file-earmark-zip-fill icon-file text-warning"></i> Rastreador Driver NB2</td>
+                    <td><a href="https://www.mediafire.com/file/a1qfa8t2hqmi6kc/Driver_NB2.zip/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download do Arquivo ZIP"><i class="bi bi-download"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/a1qfa8t2hqmi6kc/Driver_NB2.zip/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-zip-fill icon-file text-warning"></i> Rastreador Driver 32|64 Configurador</td>
+                    <td><a href="https://www.mediafire.com/file/pygkws1oihphwbi/Drivers_32-64bits.zip/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download do Arquivo ZIP"><i class="bi bi-download"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/pygkws1oihphwbi/Drivers_32-64bits.zip/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-zip-fill icon-file text-warning"></i> SSCOM Personal</td>
+                    <td><a href="https://www.mediafire.com/file/2h6edf0u924vyyo/SSCOM_PERSONAL.zip/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download do Arquivo ZIP"><i class="bi bi-download"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/2h6edf0u924vyyo/SSCOM_PERSONAL.zip/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-zip-fill icon-file text-warning"></i> SSCOM Long Life</td>
+                    <td><a href="https://www.mediafire.com/file/agf9tw9evmdouf1/SSCOM-Long_Life.zip/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download do Arquivo ZIP"><i class="bi bi-download"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/agf9tw9evmdouf1/SSCOM-Long_Life.zip/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-zip-fill icon-file text-warning"></i> Driver Windows 10 | Configurador </td>
+                    <td><a href="https://www.mediafire.com/file/eh19c2npfe6vxdu/windows10.zip/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download do Arquivo ZIP"><i class="bi bi-download"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/eh19c2npfe6vxdu/windows10.zip/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-zip-fill icon-file text-warning"></i> SSCOM GERAL</td>
+                    <td><a href="https://www.mediafire.com/file/0mne2g86rj6ed6i/SSCOME3%252B.zip/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download do Arquivo ZIP"><i class="bi bi-download"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/0mne2g86rj6ed6i/SSCOME3%252B.zip/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-camera-video-fill icon-file text-danger"></i> Abrir Rastreador 4G</td>
+                    <td><a href="https://www.mediafire.com/file/i83ccbmy76gu0hu/Equipamento4Gabrir.mp4/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-play-btn"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/i83ccbmy76gu0hu/Equipamento4Gabrir.mp4/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-camera-video-fill icon-file text-danger"></i> Procedimento dos ferrinhos</td>
+                    <td><a href="https://www.mediafire.com/file/gv5qekf08cd8ius/procedimento_dos_ferrinhos_3.mp4/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-play-btn"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/gv5qekf08cd8ius/procedimento_dos_ferrinhos_3.mp4/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-pdf-fill icon-file text-info"></i> Manual NB2</td>
+                    <td><a href="https://www.mediafire.com/file/mrejigu5gbonjy5/Manual_BWS_NB2_v1.0.0.pdf/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-book"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/mrejigu5gbonjy5/Manual_BWS_NB2_v1.0.0.pdf/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-pdf-fill icon-file text-info"></i> BWFleets</td>
+                    <td><a href="https://www.mediafire.com/file/vgfofipyh4xpg2h/Manual_BWfleets_1.0.0.pdf/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-book"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/vgfofipyh4xpg2h/Manual_BWfleets_1.0.0.pdf/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-pdf-fill icon-file text-info"></i> Manual E3+ 4G</td>
+                    <td><a href="https://www.mediafire.com/file/x4iluy7qyavr9g4/E3%252B4G_Manual_de_usuario_v1.0.1.pdf/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-book"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/x4iluy7qyavr9g4/E3%252B4G_Manual_de_usuario_v1.0.1.pdf/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-pdf-fill icon-file text-info"></i> Manual E3+ 2G</td>
+                    <td><a href="https://www.mediafire.com/file/9bzt1q72mpbjvid/Manual_E3%252BLONGLIFE_V.1.0.pdf/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-book"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/9bzt1q72mpbjvid/Manual_E3%252BLONGLIFE_V.1.0.pdf/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-pdf-fill icon-file text-info"></i> Manual E3+ LONG LIFE</td>
+                    <td><a href="https://www.mediafire.com/file/9bzt1q72mpbjvid/Manual_E3%252BLONGLIFE_V.1.0.pdf/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-book"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/9bzt1q72mpbjvid/Manual_E3%252BLONGLIFE_V.1.0.pdf/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-pdf-fill icon-file text-info"></i> Manual E3+ PERSONAL</td>
+                    <td><a href="https://www.mediafire.com/file/0pmgw9fntnvu1ui/MANUAL_E3%252BPERSONAL_V1.0.pdf/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-book"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/0pmgw9fntnvu1ui/MANUAL_E3%252BPERSONAL_V1.0.pdf/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-pdf-fill icon-file text-info"></i> Manual Instalação | 4 Pinos</td>
+                    <td><a href="https://www.mediafire.com/file/8udf2c49em0cgq7/E3%252B_MANUAL_DE_INSTALA%25C3%2587%25C3%2583O_V.1.1_2021_11_08_%25284p%2529.pdf/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-book"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/8udf2c49em0cgq7/E3%252B_MANUAL_DE_INSTALA%25C3%2587%25C3%2583O_V.1.1_2021_11_08_%25284p%2529.pdf/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+                <tr>
+                    <td><i class="bi bi-file-earmark-pdf-fill icon-file text-info"></i> Manual Instalação | 5 Pinos</td>
+                    <td><a href="https://www.mediafire.com/file/xrty76lof7s8pri/E3%252B5pin_MANUAL_DO_USU%25C3%258IO_V.1.0_%25282%2529.pdf/file" target="_blank" class="btn btn-outline-success btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="bi bi-book"></i></a></td>
+                    <td><button class="btn btn-outline-secondary btn-sm btn-copy" onclick="copiarLink('https://www.mediafire.com/file/xrty76lof7s8pri/E3%252B5pin_MANUAL_DO_USU%25C3%258IO_V.1.0_%25282%2529.pdf/file')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link"><i class="bi bi-clipboard"></i></button></td>
+                </tr>
+
+                <tr class="table-info">
+                    <td><i class="bi bi-card-checklist icon-file text-primary"></i> <strong>Solicitação de Cancelamento de Chip (FORMULÁRIO)</strong></td>
+                    <td>
+                        <a href="https://forms.zohopublic.com/bwsconecta1/form/AssetRequestForm/formperma/FlYItMeYCIlJ-XxdzKVIj1AEVLQbo24UMdh1qxC5zWY" target="_blank" class="btn btn-primary btn-sm btn-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Abrir Formulário Online">
+                            <i class="bi bi-box-arrow-up-right"></i> 
+                        </a>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-secondary btn-sm btn-copy" 
+                            onclick="copiarLink('https://forms.zohopublic.com/bwsconecta1/form/AssetRequestForm/formperma/FlYItMeYCIlJ-XxdzKVIj1AEVLQbo24UMdh1qxC5zWY')" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar Link do Formulário">
+                            <i class="bi bi-clipboard"></i> 
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// FUNÇÃO 1: Inicializa todos os Tooltips do Bootstrap
+document.addEventListener('DOMContentLoaded', function () {
+    let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+});
+
+// FUNÇÃO 2: Filtro de busca
+document.getElementById("searchInput").addEventListener("keyup", function() {
+    let filter = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#downloadsTable tbody tr");
+    rows.forEach(row => {
+        let text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? "" : "none";
+    });
+});
+
+// FUNÇÃO 3: Copiar link com feedback de alerta Bootstrap
+function copiarLink(link) {
+    navigator.clipboard.writeText(link).then(() => {
+        let alert = document.getElementById('copyAlert');
+        // Mostrar o alerta
+        alert.classList.remove('d-none');
+
+        // Esconder o alerta após 3 segundos
+        setTimeout(() => {
+            alert.classList.add('d-none');
+        }, 3000);
+
+    }).catch(err => {
+        console.error("Erro ao copiar: ", err);
+        alert("Erro ao copiar o link. Tente novamente.");
+    });
+}
+</script>
+
+</body>
+</html>
